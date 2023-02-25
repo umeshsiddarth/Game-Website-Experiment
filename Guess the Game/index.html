@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Try your luck</title>
-    <link href="guessTheNumber.css" rel="stylesheet"></link>
+    <link href="style.css" rel="stylesheet"></link>
   </head>
   <body>
     <header>
@@ -17,18 +17,23 @@
 
     <main>
         <section class="dice">
-            <img src="https://cdn-icons-png.flaticon.com/512/744/744685.png?w=826&t=st=1677084822~exp=1677085422~hmac=bc97848e02590eb6a11646fd237a0433febfb9e96f1900c8147596f9367b884a" alt="" class="dice">
-            <button class="add">+</button>
-            <button class="subtract">-</button>
-            <button class="multiply">x</button>
-            <button class="divide">/</button>
+          <div class="dice1">
+            <h2 class="diceOut1">0</h2>
+            <!-- <img src="https://cdn-icons-png.flaticon.com/512/744/744685.png?w=826&t=st=1677084822~exp=1677085422~hmac=bc97848e02590eb6a11646fd237a0433febfb9e96f1900c8147596f9367b884a" alt="" class="diceimg"> -->
+            <button class="add1">+</button>
+            <button class="subtract1">-</button>
+            <button class="multiply1">x</button>
+            <button class="divide1">/</button>
+          </div>
+          <div class="dice2"><!-- Add i button to divide and info on hover -->
+            <h2 class="diceOut2">0</h2>
+            <!-- <img src="https://cdn-icons-png.flaticon.com/512/744/744685.png?w=826&t=st=1677084822~exp=1677085422~hmac=bc97848e02590eb6a11646fd237a0433febfb9e96f1900c8147596f9367b884a" alt="" class="diceimg"> -->
+            <button class="add2">+</button>
+            <button class="subtract2">-</button>
+            <button class="multiply2">x</button>
+            <button class="divide2">/</button>
             <!-- Add i button to divide and info on hover -->
-            <img src="https://cdn-icons-png.flaticon.com/512/744/744685.png?w=826&t=st=1677084822~exp=1677085422~hmac=bc97848e02590eb6a11646fd237a0433febfb9e96f1900c8147596f9367b884a" alt="" class="dice">
-            <button class="add">+</button>
-            <button class="subtract">-</button>
-            <button class="multiply">x</button>
-            <button class="divide">/</button>
-            <!-- Add i button to divide and info on hover -->
+          </div>
             <div>
                 <button class="roll">Roll</button>
             </div>
@@ -36,11 +41,11 @@
 
         <section class="guess">
             <p class="display">Display output</p>
-            <p class="guessedNumber">0</p>
+            <h2 class="guessedNumber">0</h2>
             <p class="feedback">high or low or winner</p>
-            <p class="tries">Number of tries</p>
+            <p class="tries">Number of tries; <span class="tires">0</span></p>
         </section>
     </main>
-    <script src="guessTheNumber.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>
