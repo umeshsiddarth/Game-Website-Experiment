@@ -14,3 +14,17 @@
 12. Increase complexity by asking them to choose the number range
 13. Reset button for new game
 14.
+
+Ask input from user (easy (1 to 20), medium (15 to 50), tough (15 to 200))
+Change the image field to number temporarily and generate random number based on the difficulty selection
+Add event handler for roll button
+Add event handler for Maths operation buttons
+Access display number and show the numbers as per the events.
+
+Advanced Implementations:
+Check the random number and guess number
+If the value becomes 0 enable only add
+Disable roll until whole math operation is over
+Reset button
+Change background color if the answer is right
+Make multiple tiers for too high, high, too low, low and correct
