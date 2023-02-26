@@ -1,10 +1,4 @@
 "use strict";
-
-const diceRoll = function () {
-  return Math.floor(Math.random() * 6) + 1;
-};
-
-// const difficulty = "Easy";
 const rollButton = document.querySelector(".roll");
 const add1 = document.querySelector(".add1");
 const subtract1 = document.querySelector(".subtract1");
@@ -14,13 +8,63 @@ const add2 = document.querySelector(".add2");
 const subtract2 = document.querySelector(".subtract2");
 const multiply2 = document.querySelector(".multiply2");
 const divide2 = document.querySelector(".divide2");
+const resetbtn = document.querySelector(".reset");
+let tries = document.querySelector(".tries");
 let diceOut1 = document.querySelector(".diceOut1");
 let diceOut2 = document.querySelector(".diceOut2");
 let guess = document.querySelector(".guessedNumber");
+let difficulty = document.querySelector("#difficulty");
+let secretNumber = 0;
 
+const secretNumberGenerator = (min, max) => {
+  Math.floor(Math.random() * max) + min;
+};
+
+const diceRoll = function () {
+  return Math.floor(Math.random() * 6) + 1;
+};
+
+const reset = (value) => {
+  rollButton.disabled = value;
+  add1.disabled = value;
+  subtract1.disabled = value;
+  multiply1.disabled = value;
+  divide1.disabled = value;
+  add2.disabled = value;
+  subtract2.disabled = value;
+  multiply2.disabled = value;
+  divide2.disabled = value;
+  diceOut1.textContent = 0;
+  diceOut2.textContent = 0;
+  guess.textContent = 0;
+  tries.textContent = 0;
+};
+
+if (!difficulty.value) {
+  reset(true);
+}
+
+difficulty.addEventListener("change", () => {
+  if (!difficulty.value) {
+    reset(true);
+  } else if (difficulty.value === "easy") {
+    secretNumber = secretNumberGenerator(1, 20);
+    reset(true);
+    rollButton.disabled = false;
+  } else if (difficulty.value === "medium") {
+    secretNumber = secretNumberGenerator(15, 50);
+    reset(true);
+    rollButton.disabled = false;
+  } else if (difficulty.value === "hard") {
+    secretNumber = secretNumberGenerator(25, 200);
+    reset(true);
+    rollButton.disabled = false;
+  }
+});
 rollButton.addEventListener("click", () => {
   diceOut1.textContent = diceRoll();
   diceOut2.textContent = diceRoll();
+  // Add if conditions for ebanling and disabling math buttons
 });
 
 add1.addEventListener("click", () => {
