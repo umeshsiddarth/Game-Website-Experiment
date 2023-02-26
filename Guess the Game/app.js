@@ -40,6 +40,11 @@ const reset = (value) => {
   tries.textContent = 0;
 };
 
+resetbtn.addEventListener("click", () => {
+  reset(true);
+  difficulty.value = "";
+});
+
 if (!difficulty.value) {
   reset(true);
 }
@@ -64,6 +69,25 @@ difficulty.addEventListener("change", () => {
 rollButton.addEventListener("click", () => {
   diceOut1.textContent = diceRoll();
   diceOut2.textContent = diceRoll();
+  if (Number(guess.textContent) <= 0) {
+    add1.disabled = false;
+    subtract1.disabled = true;
+    multiply1.disabled = true;
+    divide1.disabled = true;
+    add2.disabled = false;
+    subtract2.disabled = true;
+    multiply2.disabled = true;
+    divide2.disabled = true;
+  } else {
+    add1.disabled = false;
+    subtract1.disabled = false;
+    multiply1.disabled = false;
+    divide1.disabled = false;
+    add2.disabled = false;
+    subtract2.disabled = false;
+    multiply2.disabled = false;
+    divide2.disabled = false;
+  }
   // Add if conditions for ebanling and disabling math buttons
 });
 
