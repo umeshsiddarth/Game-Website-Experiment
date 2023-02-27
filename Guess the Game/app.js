@@ -15,13 +15,25 @@ let diceOut2 = document.querySelector(".diceOut2");
 let guess = document.querySelector(".guessedNumber");
 let difficulty = document.querySelector("#difficulty");
 let secretNumber = 0;
-
+let feedback = document.querySelector(".feedback");
+let currentGuess = 0;
 const secretNumberGenerator = (min, max) => {
-  Math.floor(Math.random() * max) + min;
+  return Math.floor(Math.random() * max) + min;
 };
 
 const diceRoll = function () {
   return Math.floor(Math.random() * 6) + 1;
+};
+
+const feedbackCond = function (currentGuess, secretNumber) {
+  if (currentGuess < secretNumber) {
+    document.querySelector(".feedback").textContent = "Low";
+  } else if (currentGuess > secretNumber) {
+    document.querySelector(".feedback").textContent = "High";
+  } else if (currentGuess === secretNumber) {
+    document.querySelector(".feedback").textContent = "Winner";
+    rollButton.disabled = true;
+  }
 };
 
 const reset = (value) => {
@@ -38,6 +50,7 @@ const reset = (value) => {
   diceOut2.textContent = 0;
   guess.textContent = 0;
   tries.textContent = 0;
+  feedback.textContent = "Start Guessing";
 };
 
 resetbtn.addEventListener("click", () => {
@@ -56,10 +69,12 @@ difficulty.addEventListener("change", () => {
     secretNumber = secretNumberGenerator(1, 20);
     reset(true);
     rollButton.disabled = false;
+    console.log(secretNumber);
   } else if (difficulty.value === "medium") {
     secretNumber = secretNumberGenerator(15, 50);
     reset(true);
     rollButton.disabled = false;
+    console.log(secretNumber);
   } else if (difficulty.value === "hard") {
     secretNumber = secretNumberGenerator(25, 200);
     reset(true);
@@ -88,43 +103,92 @@ rollButton.addEventListener("click", () => {
     multiply2.disabled = false;
     divide2.disabled = false;
   }
-  // Add if conditions for ebanling and disabling math buttons
+  // Add if conditions for enabling and disabling math buttons
 });
 
 add1.addEventListener("click", () => {
   let newGuess = Number(guess.textContent) + Number(diceOut1.textContent);
+  console.log(newGuess, secretNumber);
+  feedbackCond(newGuess, secretNumber);
   guess.textContent = newGuess;
+  add1.disabled = true;
+  subtract1.disabled = true;
+  multiply1.disabled = true;
+  divide1.disabled = true;
 });
 subtract1.addEventListener("click", () => {
   let newGuess = Number(guess.textContent) - Number(diceOut1.textContent);
+
+  feedbackCond(newGuess, secretNumber);
   guess.textContent = newGuess;
+  add1.disabled = true;
+  subtract1.disabled = true;
+  multiply1.disabled = true;
+  divide1.disabled = true;
 });
 multiply1.addEventListener("click", () => {
   let newGuess = Number(guess.textContent) * Number(diceOut1.textContent);
+
+  feedbackCond(newGuess, secretNumber);
   guess.textContent = newGuess;
+  add1.disabled = true;
+  subtract1.disabled = true;
+  multiply1.disabled = true;
+  divide1.disabled = true;
 });
 divide1.addEventListener("click", () => {
   let newGuess = Math.round(
     Number(guess.textContent) / Number(diceOut1.textContent)
   );
+
+  feedbackCond(newGuess, secretNumber);
   guess.textContent = newGuess;
+  add1.disabled = true;
+  subtract1.disabled = true;
+  multiply1.disabled = true;
+  divide1.disabled = true;
 });
 
 add2.addEventListener("click", () => {
   let newGuess = Number(guess.textContent) + Number(diceOut2.textContent);
+
+  console.log(newGuess, secretNumber);
+  feedbackCond(newGuess, secretNumber);
   guess.textContent = newGuess;
+  add2.disabled = true;
+  subtract2.disabled = true;
+  multiply2.disabled = true;
+  divide2.disabled = true;
 });
 subtract2.addEventListener("click", () => {
   let newGuess = Number(guess.textContent) - Number(diceOut2.textContent);
+
+  feedbackCond(newGuess, secretNumber);
   guess.textContent = newGuess;
+  add2.disabled = true;
+  subtract2.disabled = true;
+  multiply2.disabled = true;
+  divide2.disabled = true;
 });
 multiply2.addEventListener("click", () => {
   let newGuess = Number(guess.textContent) * Number(diceOut2.textContent);
+
+  feedbackCond(newGuess, secretNumber);
   guess.textContent = newGuess;
+  add2.disabled = true;
+  subtract2.disabled = true;
+  multiply2.disabled = true;
+  divide2.disabled = true;
 });
 divide2.addEventListener("click", () => {
   let newGuess = Math.round(
     Number(guess.textContent) / Number(diceOut2.textContent)
   );
+
+  feedbackCond(newGuess, secretNumber);
   guess.textContent = newGuess;
+  add2.disabled = true;
+  subtract2.disabled = true;
+  multiply2.disabled = true;
+  divide2.disabled = true;
 });
