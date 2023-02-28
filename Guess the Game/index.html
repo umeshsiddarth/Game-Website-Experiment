@@ -1,58 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Try your luck</title>
-    <link href="style.css" rel="stylesheet"></link>
-  </head>
-  <body>
-    <header>
-        <h1>Try your luck!</h1>
-        <p class="brief">This is not the usual guess my number game. Try your luck and use your math skills to guess the number.</p>
-        <button class="reset">Reset</button>
 
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Try your luck</title>
+  <link href="style.css" rel="stylesheet">
+  </link>
+</head>
 
-    <main>
-      <label for="difficulty">Select difficulty</label>
-        <select name="level" id="difficulty">
-          <option value="">---Select difficulty---</option>
-          <option value="easy">Easy (1 to 20)</option>
-          <option value="medium">Medium (15 to 50)</option>
-          <option value="hard">Hard (25 to 200)</option>
-        </select>
-        <section class="dice">
-          <div class="dice1">
-            <h2 class="diceOut1">0</h2>
-            <!-- <img src="https://cdn-icons-png.flaticon.com/512/744/744685.png?w=826&t=st=1677084822~exp=1677085422~hmac=bc97848e02590eb6a11646fd237a0433febfb9e96f1900c8147596f9367b884a" alt="" class="diceimg"> -->
-            <button class="add1">+</button>
-            <button class="subtract1">-</button>
-            <button class="multiply1">x</button>
-            <button class="divide1">/</button>
-          </div>
-          <div class="dice2"><!-- Add i button to divide and info on hover -->
-            <h2 class="diceOut2">0</h2>
-            <!-- <img src="https://cdn-icons-png.flaticon.com/512/744/744685.png?w=826&t=st=1677084822~exp=1677085422~hmac=bc97848e02590eb6a11646fd237a0433febfb9e96f1900c8147596f9367b884a" alt="" class="diceimg"> -->
-            <button class="add2">+</button>
-            <button class="subtract2">-</button>
-            <button class="multiply2">x</button>
-            <button class="divide2">/</button>
-            <!-- Add i button to divide and info on hover -->
-          </div>
-            <div>
-                <button class="roll">Roll</button>
-            </div>
-        </section>
+<body>
+  <header class="hero">
+    <h1 class="hero__heading">Try your luck!</h1>
+    <p class="hero__brief">This is not the usual guess my number game. Try your luck and use your math skills to guess
+      the number.</p>
+  </header>
 
-        <section class="guess">
-            <p class="display">Display output</p>
-            <h2 class="guessedNumber">0</h2>
-            <p class="feedback">high or low or winner</p>
-            <p >Number of tries; <span class="tries">0</span></p>
-        </section>
-    </main>
-    <script src="app.js"></script>
-  </body>
+  <main>
+    <section class="difficulty">
+    <label for="difficulty__level">Select difficulty</label>
+    <select name="level" id="difficulty__level">
+      <option value="">---Select difficulty---</option>
+      <option value="easy">Easy (1 to 20)</option>
+      <option value="medium">Medium (15 to 50)</option>
+      <option value="hard">Hard (25 to 200)</option>
+    </select>
+  </section>
+  <section class="player">
+    <p class="player__current">Player 1 turn</p>
+  </section>
+    <section class="player1">
+      <p class="player1__guess">Guessed Number: <span class="player1__guess--number">0</span></p>
+      <button class="player1__add">+</button>
+      <button class="player1__subtract">-</button>
+      <button class="player1__multiply">x</button>
+      <button class="player1__divide">/</button>
+      <button class="player1__roll">Roll</button>
+      <p class="player1__feedback">Start guessing...</p>
+      <p class="player1__tries">No.of tries: <span class="player1__tries--count">0</span></p>
+    </section>
+
+    <section class="dice">
+      <h2 class="dice__output">0</h2>
+    </section>
+    <button class="reset">New Game</button>
+  </main>
+  <script src="app.js"></script>
+</body>
+
 </html>
