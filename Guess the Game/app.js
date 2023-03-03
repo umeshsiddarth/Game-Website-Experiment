@@ -1,4 +1,4 @@
-const difficultyEl = document.querySelector(".level");
+const difficultyEl = document.querySelector("#difficulty__level");
 const p1AddEl = document.querySelector(".player1__add");
 const p1SubEl = document.querySelector(".player1__subtract");
 const p1MulEl = document.querySelector(".player1__multiply");
@@ -14,7 +14,7 @@ const diceRoll = function () {
 };
 
 const secretNumberGenerator = function (min, max) {
-  return Math.floor(Math.random() * max) + min;
+  return Math.floor(Math.random() * (max - min)) + min;
 };
 
 let guess = 0;
@@ -35,6 +35,29 @@ function feedback() {
     p1SecretNumberEl.textContent = secretNumber;
     document.body.style.backgroundColor = "green";
   }
+}
+
+difficultyEl.addEventListener("change", () => {
+  if (difficultyEl.value === "easy") {
+    secretNumber = secretNumberGenerator(1, 20);
+    p1RollEl.disabled = false;
+  } else if (difficultyEl.value === "medium") {
+    secretNumber = secretNumberGenerator(15, 50);
+    p1RollEl.disabled = false;
+  } else if (difficultyEl.value === "hard") {
+    secretNumber = secretNumberGenerator(25, 200);
+    p1RollEl.disabled = false;
+  } else {
+    p1RollEl.disabled = true;
+  }
+});
+
+if (difficultyEl.value === "") {
+  p1RollEl.disabled = true;
+  p1AddEl.disabled = true;
+  p1SubEl.disabled = true;
+  p1MulEl.disabled = true;
+  p1DivEl.disabled = true;
 }
 
 p1RollEl.addEventListener("click", () => {
@@ -108,5 +131,8 @@ p1DivEl.addEventListener("click", () => {
   p1DivEl.disabled = true;
   p1RollEl.disabled = false;
 });
-
-console.log(Math.round(1.567));
+// 1) Resetting
+// 2) P2
+// 3) Refactor
+// 4) Changing turns
+// 5) styling
