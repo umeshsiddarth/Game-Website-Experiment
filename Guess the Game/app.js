@@ -9,6 +9,7 @@ const p1DiceOutEl = document.querySelector(".player1__dice-output");
 let p1SecretNumberEl = document.querySelector(".player1__secret-number");
 let p1guessEl = document.querySelector(".player1__guess--number");
 let p1FeedbackEl = document.querySelector(".player1__feedback");
+let newGame = document.querySelector(".reset");
 const diceRoll = function () {
   return Math.floor(Math.random() * 6) + 1;
 };
@@ -18,7 +19,26 @@ const secretNumberGenerator = function (min, max) {
 };
 
 let guess = 0;
-let secretNumber = secretNumberGenerator(1, 20);
+let secretNumber = 0;
+
+function p1ResetBtn(bool) {
+  p1AddEl.disabled = bool;
+  p1SubEl.disabled = bool;
+  p1MulEl.disabled = bool;
+  p1DivEl.disabled = bool;
+}
+
+function reset(bool) {
+  p1ResetBtn(true);
+  p1RollEl.disabled = true;
+  difficultyEl.value = "";
+  p1AttemptsEl.textContent = 0;
+  p1DiceOutEl.textContent = 0;
+  secretNumber = 0;
+  p1SecretNumberEl.textContent = 0;
+  document.body.style.backgroundColor = "#fff";
+  p1SecretNumberEl.textContent = "?";
+}
 
 function feedback() {
   if (
@@ -54,10 +74,7 @@ difficultyEl.addEventListener("change", () => {
 
 if (difficultyEl.value === "") {
   p1RollEl.disabled = true;
-  p1AddEl.disabled = true;
-  p1SubEl.disabled = true;
-  p1MulEl.disabled = true;
-  p1DivEl.disabled = true;
+  p1ResetBtn(true);
 }
 
 p1RollEl.addEventListener("click", () => {
@@ -73,28 +90,19 @@ p1RollEl.addEventListener("click", () => {
     p1MulEl.disabled = true;
     p1DivEl.disabled = true;
   } else {
-    p1AddEl.disabled = false;
-    p1SubEl.disabled = false;
-    p1MulEl.disabled = false;
-    p1DivEl.disabled = false;
+    p1ResetBtn(false);
   }
 });
 
 if (p1RollEl.disabled === false) {
-  p1AddEl.disabled = true;
-  p1SubEl.disabled = true;
-  p1MulEl.disabled = true;
-  p1DivEl.disabled = true;
+  p1ResetBtn(true);
 }
 
 p1AddEl.addEventListener("click", () => {
   guess += Number(p1DiceOutEl.textContent);
   p1guessEl.textContent = guess;
   feedback();
-  p1AddEl.disabled = true;
-  p1SubEl.disabled = true;
-  p1MulEl.disabled = true;
-  p1DivEl.disabled = true;
+  p1ResetBtn(true);
   p1RollEl.disabled = false;
 });
 
@@ -102,10 +110,7 @@ p1SubEl.addEventListener("click", () => {
   guess -= Number(p1DiceOutEl.textContent);
   p1guessEl.textContent = guess;
   feedback();
-  p1AddEl.disabled = true;
-  p1SubEl.disabled = true;
-  p1MulEl.disabled = true;
-  p1DivEl.disabled = true;
+  p1ResetBtn(true);
   p1RollEl.disabled = false;
 });
 
@@ -113,10 +118,7 @@ p1MulEl.addEventListener("click", () => {
   guess *= Number(p1DiceOutEl.textContent);
   p1guessEl.textContent = guess;
   feedback();
-  p1AddEl.disabled = true;
-  p1SubEl.disabled = true;
-  p1MulEl.disabled = true;
-  p1DivEl.disabled = true;
+  p1ResetBtn(true);
   p1RollEl.disabled = false;
 });
 
@@ -125,13 +127,14 @@ p1DivEl.addEventListener("click", () => {
   guess = Math.round(temp);
   p1guessEl.textContent = guess;
   feedback();
-  p1AddEl.disabled = true;
-  p1SubEl.disabled = true;
-  p1MulEl.disabled = true;
-  p1DivEl.disabled = true;
+  p1ResetBtn(true);
   p1RollEl.disabled = false;
 });
-// 1) Resetting
+
+newGame.addEventListener("click", () => {
+  reset(true);
+});
+
 // 2) P2
 // 3) Refactor
 // 4) Changing turns
