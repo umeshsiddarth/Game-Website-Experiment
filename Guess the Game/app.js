@@ -9,6 +9,17 @@ const p1DiceOutEl = document.querySelector(".player1__dice-output");
 let p1SecretNumberEl = document.querySelector(".player1__secret-number");
 let p1guessEl = document.querySelector(".player1__guess--number");
 let p1FeedbackEl = document.querySelector(".player1__feedback");
+
+const p2AddEl = document.querySelector(".player2__add");
+const p2SubEl = document.querySelector(".player2__subtract");
+const p2MulEl = document.querySelector(".player2__multiply");
+const p2DivEl = document.querySelector(".player2__divide");
+const p2RollEl = document.querySelector(".player2__roll");
+const p2AttemptsEl = document.querySelector(".player2__attempts--count");
+const p2DiceOutEl = document.querySelector(".player2__dice-output");
+let p2SecretNumberEl = document.querySelector(".player2__secret-number");
+let p2guessEl = document.querySelector(".player2__guess--number");
+let p2FeedbackEl = document.querySelector(".player2__feedback");
 let newGame = document.querySelector(".reset");
 const diceRoll = function () {
   return Math.floor(Math.random() * 6) + 1;
@@ -19,9 +30,11 @@ const secretNumberGenerator = function (min, max) {
 };
 
 let guess = 0;
-let secretNumber = 0;
+let p1SecretNumber = 0;
+let p2SecretNumber = 0;
 
 function p1ResetBtn(bool) {
+  // 2nd player implementation pending
   p1AddEl.disabled = bool;
   p1SubEl.disabled = bool;
   p1MulEl.disabled = bool;
@@ -34,18 +47,22 @@ function reset(bool) {
   difficultyEl.value = "";
   p1AttemptsEl.textContent = 0;
   p1DiceOutEl.textContent = 0;
-  secretNumber = 0;
+  p1SecretNumber = 0;
+  p2SecretNumber = 0;
   p1SecretNumberEl.textContent = 0;
+  p2SecretNumberEl.textContent = 0;
   document.body.style.backgroundColor = "#fff";
   p1SecretNumberEl.textContent = "?";
+  p2SecretNumberEl.textContent = "?";
 }
 
 function feedback() {
+  // 2nd player implementation pending
   if (
     p1guessEl.textContent === "0" &&
     p1FeedbackEl.textContent === "Start guessing..."
   ) {
-    // Do nothing
+    return;
   } else if (secretNumber < guess) {
     p1FeedbackEl.textContent = "High Number";
   } else if (secretNumber > guess) {
@@ -59,13 +76,13 @@ function feedback() {
 
 difficultyEl.addEventListener("change", () => {
   if (difficultyEl.value === "easy") {
-    secretNumber = secretNumberGenerator(1, 20);
+    p1SecretNumber = secretNumberGenerator(1, 20);
     p1RollEl.disabled = false;
   } else if (difficultyEl.value === "medium") {
-    secretNumber = secretNumberGenerator(15, 50);
+    p1SecretNumber = secretNumberGenerator(15, 50);
     p1RollEl.disabled = false;
   } else if (difficultyEl.value === "hard") {
-    secretNumber = secretNumberGenerator(25, 200);
+    p1SecretNumber = secretNumberGenerator(25, 200);
     p1RollEl.disabled = false;
   } else {
     p1RollEl.disabled = true;
