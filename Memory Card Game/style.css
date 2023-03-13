@@ -1,0 +1,63 @@
+*,*::after,*::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    box-sizing: inherit;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    height: 500px;
+    width: 500px;
+    border-radius: 20px;
+    background-color: aqua;
+
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 80px 80px 80px 80px;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    column-gap: 20px;
+    row-gap: 10px;
+}
+
+.card .back-view img {
+    height: 80px;
+    width: 62px;
+    
+}
+
+.back-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110px;
+}
+
+.card .front-view {
+    display: none;
+    height: 110px;
+    width: 80px;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+
+li {
+    list-style: none;
+}
+
+.view {
+    background-color: burlywood;
+}
