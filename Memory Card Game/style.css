@@ -16,19 +16,24 @@ body{
     height: 500px;
     width: 500px;
     border-radius: 20px;
-    background-color: aqua;
+    background-color: lightsteelblue;
 
 }
 
 .cards {
     display: grid;
     grid-template-columns: 80px 80px 80px 80px;
-    align-items: center;
+    align-content: center;
     justify-content: center;
     height: 100%;
     width: 100%;
     column-gap: 20px;
     row-gap: 10px;
+   
+}
+
+.card {
+    /* position: relative; */
 }
 
 .card .back-view img {
@@ -37,22 +42,22 @@ body{
     
 }
 
-.back-view {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 110px;
-}
-
 .card .front-view {
-    display: none;
-    height: 110px;
-    width: 80px;
-    align-items: center;
-    justify-content: center;
-    
+    transform: rotateY(0deg);
 }
 
+.card .front-view:hover {
+    transform: rotateY(180deg);
+}
+
+.card .back-view {
+    display: none;
+    transform: rotateY(-180deg);
+}
+
+.card .back-view:hover {
+    transform: rotateY(0deg);
+}
 
 li {
     list-style: none;
@@ -60,4 +65,10 @@ li {
 
 .view {
     background-color: burlywood;
+    width: 80px;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* position: absolute; */
 }
